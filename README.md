@@ -17,9 +17,23 @@ If you tried to make a project with zigbee outside the built-in examples from ar
 ---
 
 ### Block Diagram
+
 <p align="center">
   <img src="documentations/Block_Diagram.png" width="400">
 </p>
+
+---
+
+### Repository Structure 
+
+Zig_Transducer
+│
+├── Coordinator/
+├── Router/
+├── End_Device/
+├── documentations/
+│   └── Block_Diagram.png
+└── README.md
 
 ---
 
@@ -65,3 +79,10 @@ If you tried to make a project with zigbee outside the built-in examples from ar
 
 ---
 
+
+
+---
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
