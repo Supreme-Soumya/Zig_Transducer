@@ -26,14 +26,18 @@ If you tried to make a project with zigbee outside the built-in examples from ar
 
 ### Repository Structure 
 
-Zig_Transducer
-│
-├── Coordinator/
-├── Router/
-├── End_Device/
-├── documentations/
-│   └── Block_Diagram.png
+## Repository Structure
+
+```text
+Zig_Transducer/
+├── documentations/      # Block diagrams and documentation images
+├── src/
+│   ├── coordinator/     # Coordinator firmware
+│   ├── end_device/      # End Device firmware
+│   └── router/          # Router firmware
+├── LICENSE
 └── README.md
+```
 
 ---
 
@@ -79,7 +83,34 @@ Zig_Transducer
 
 ---
 
+### Troubleshooting
 
+| Problem               | Solution                        |
+| --------------------- | ------------------------------- |
+| Doesn't compile       | Use ESP-IDF 5.3.2               |
+| End device won't join | Erase flash                     |
+| No serial output      | Check baud rate                 |
+| Router not forwarding | Verify it's joined the same PAN |
+
+
+---
+
+### Future Improvements
+
+The current implementation serves as a basic Zigbee-based wireless voltage monitoring system. Some planned improvements include:
+
+- [ ] Support for multiple end devices transmitting simultaneously.
+- [ ] Battery-powered end devices with low-power sleep modes.
+- [ ] Periodic sensor reporting with configurable transmission intervals.
+- [ ] Automatic network rejoin after power loss or communication failure.
+- [ ] Over-the-Air (OTA) firmware update support.
+- [ ] Integration with MQTT and cloud platforms through a Zigbee gateway.
+- [ ] Real-time data logging and visualization dashboard.
+- [ ] Mobile/Web interface for remote monitoring.
+- [ ] Support for additional sensors such as current, temperature, humidity, and power measurement modules.
+- [ ] LCD/OLED display on the coordinator for standalone operation.
+- [ ] Support for encrypted Zigbee communication and enhanced network security.
+- [ ] PCB design for a compact and deployable hardware module.
 
 ---
 
