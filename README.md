@@ -1,6 +1,7 @@
 # Zig_Transducer
-A ZIgbee based WSN Node setup to read Transducer data
+A Zigbee based WSN Node setup to read Transducer data
 
+### Motivation
 If you tried to make a project with zigbee outside the built-in examples from arduino ide or esp ide, you know it is frustratingly cumbersome. I went through it and hence sharing some of my experience, so you don't have to go through same hassle.
 
 ---
@@ -17,7 +18,6 @@ If you tried to make a project with zigbee outside the built-in examples from ar
 ---
 
 ### Block Diagram
-
 <p align="center">
   <img src="documentations/Block_Diagram.png" width="400">
 </p>
@@ -25,9 +25,6 @@ If you tried to make a project with zigbee outside the built-in examples from ar
 ---
 
 ### Repository Structure 
-
-## Repository Structure
-
 ```text
 Zig_Transducer/
 ├── documentations/      # Block diagrams and documentation images
@@ -41,9 +38,19 @@ Zig_Transducer/
 
 ---
 
-### Wiring
+### Software Requirements
+- ESP-IDF v5.3.2
+- ESP IDE
+- ESP Zigbee SDK
+- Python (for esptool.py)
 
+---
+
+### Wiring
 #### End Device Side
+
+> **Note**
+> The end device uses **GPIO1 (ADC1_CH1)** for reading the analog output of the voltage transducer.
 
 | Voltage Transducer Pin | ESP32-C6 Pin |
 |------------------------|--------------|
@@ -55,7 +62,6 @@ Zig_Transducer/
 ---
 
 ### Pre-flashing Instructions
-
 1. Before clicking build, make sure you have chosen the correct board. It is best practice to make sure your com port detects the chip automatically through the inbuilt detect option while you       select the board.
 2. After you have used this code, update the `Cmakelists.txt` within the main folder with the name of the .c files you are saving as.
    It should be like this:
@@ -74,7 +80,6 @@ Zig_Transducer/
 ---
 
 ### Pairing Procedure
-
 1. Flash the coordinator first
 2. Flash the router(s) / end device(s) (Don't flash the codes from separate PCs, doing so assigns them separate addresses, hence pairing fails)
 3. Turn on the coordinator first, wait a few seconds to let it form the network.
@@ -84,7 +89,6 @@ Zig_Transducer/
 ---
 
 ### Troubleshooting
-
 | Problem               | Solution                        |
 | --------------------- | ------------------------------- |
 | Doesn't compile       | Use ESP-IDF 5.3.2               |
@@ -96,7 +100,6 @@ Zig_Transducer/
 ---
 
 ### Future Improvements
-
 The current implementation serves as a basic Zigbee-based wireless voltage monitoring system. Some planned improvements include:
 
 - [ ] Support for multiple end devices transmitting simultaneously.
@@ -111,6 +114,13 @@ The current implementation serves as a basic Zigbee-based wireless voltage monit
 - [ ] LCD/OLED display on the coordinator for standalone operation.
 - [ ] Support for encrypted Zigbee communication and enhanced network security.
 - [ ] PCB design for a compact and deployable hardware module.
+
+---
+
+### References
+- ESP-IDF Documentation
+- ESP Zigbee SDK Documentation
+- Espressif ESP32-C6 Technical Reference Manual
 
 ---
 
