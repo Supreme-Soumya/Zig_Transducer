@@ -4,7 +4,6 @@ A ZIgbee based WSN Node setup to read Transducer data
 If you tried to make a project with zigbee outside the built-in examples from arduino ide or esp ide, you know it is frustratingly cumbersome. I went through it and hence sharing some of my experience, so you don't have to go through same hassle.
 __________________________________________________________________________________________________________
 **This project makes use of ESP32-C6-Devkitc-1-N8 modules as the coordinator, router (if needed) and end device nodes. To flash these boards, I used ESP IDE with ESP IDF version 5.3.2 (For some reason they removed some of the zigbee stack featureset in later versions). I faced many compilation issue while doing this on Windows, so eventually installed Ubuntu 24.04.4 and there downloaded ESP IDF 5.3.2, then this worked. So, if you are facing errors while compiling, the IDF version could be the issue.**
-
 ________________________________________________________________________________________________________
 **Project Description**
 1. A voltage transducer reads the real voltage and gives proportional analog voltage that can be safely measured by the ESP32-C6.
@@ -12,9 +11,23 @@ ________________________________________________________________________________
 3. The coordinator receives these packets and outputs the received measurements through the serial monitor.
 ____________________________________________________________________________________________________________
 **Block Diagram**
-<img width="750" height="1202" alt="Untitled design" src="https://github.com/user-attachments/assets/ee196f21-dd90-4859-8948-5d5f6c85546c" />
+<p align="center">
+  <img src="documentations/Block_Diagram.png" width="400">
+</p>
+_________________________________________________________________________________________________________________________________
+**Wiring** 
 
-______________________________________________________________________________________________________
+End Device Side-
+
+VCC ------ 5V
+
+GND ------ GND
+
+TRANSDUCER OUT + ------ GPIO1 (ADC1_CH1)
+
+TRANSDUCER OUT - ------ GND
+
+____________________________________________________________________________________________________________________________________________________
 **Things to consider**
 1. Before clicking build, make sure you have chosen the correct board. It is best practice to make sure your com port detects the chip automatically through the inbuilt detect option while you       select the board.
 2. After you have used this code, update the `Cmakelists.txt` within the main folder with the name of the .c files you are saving as.
