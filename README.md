@@ -2,30 +2,29 @@
 A ZIgbee based WSN Node setup to read Transducer data
 
 If you tried to make a project with zigbee outside the built-in examples from arduino ide or esp ide, you know it is frustratingly cumbersome. I went through it and hence sharing some of my experience, so you don't have to go through same hassle.
-__________________________________________________________________________________________________________
+---
 **This project makes use of ESP32-C6-Devkitc-1-N8 modules as the coordinator, router (if needed) and end device nodes. To flash these boards, I used ESP IDE with ESP IDF version 5.3.2 (For some reason they removed some of the zigbee stack featureset in later versions). I faced many compilation issue while doing this on Windows, so eventually installed Ubuntu 24.04.4 and there downloaded ESP IDF 5.3.2, then this worked. So, if you are facing errors while compiling, the IDF version could be the issue.**
-________________________________________________________________________________________________________
+---
 **Project Description**
 1. A voltage transducer reads the real voltage and gives proportional analog voltage that can be safely measured by the ESP32-C6.
 2. ESP32-C6 end device processes this ADC reading, converts it into the corresponding voltage value, and sends the data wirelessly over the Zigbee network.
 3. The coordinator receives these packets and outputs the received measurements through the serial monitor.
-____________________________________________________________________________________________________________
+---
 **Block Diagram**
 <p align="center">
   <img src="documentations/Block_Diagram.png" width="400">
 </p>
-_________________________________________________________________________________________________________________________________
-**Wiring** 
+---
+**Wiring**
 
-End Device Side-
+### End Device Side
 
-VCC ------ 5V
-
-GND ------ GND
-
-TRANSDUCER OUT + ------ GPIO1 (ADC1_CH1)
-
-TRANSDUCER OUT - ------ GND
+| Voltage Transducer Pin | ESP32-C6 Pin |
+|------------------------|--------------|
+| VCC                    | 5V |
+| GND                    | GND |
+| TRANSDUCER OUT +       | GPIO1 (ADC1_CH1) |
+| TRANSDUCER OUT -       | GND |
 
 ____________________________________________________________________________________________________________________________________________________
 **Things to consider**
