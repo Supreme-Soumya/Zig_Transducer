@@ -89,6 +89,33 @@ Zig_Transducer/
 
 ---
 
+### Expected Serial Output
+
+After flashing the coordinator and powering on the Zigbee network, the serial monitor should show messages similar to the following:
+
+```text
+I (512) ESP_ZB_GATEWAY: Initialize Zigbee stack
+W (512) ESP_ZB_GATEWAY: Network(0x6e19) closed, devices joining not allowed.
+I (522) ESP_ZB_GATEWAY: Device started up in non factory-reset mode
+I (1132) ESP_ZB_GATEWAY: Network(0x6e19) is open for 180 seconds
+```
+
+Once the end device joins the network, the coordinator should begin receiving sensor data periodically:
+
+```text
+I (137892) COORDINATOR: Received JSON: {"sensor4":0.0,"sensor5":0.0,"sensor6":0.0}
+
+I (193002) COORDINATOR: Received JSON: {"sensor4":2046.0,"sensor5":0.0,"sensor6":0.0}
+
+I (198012) COORDINATOR: Received JSON: {"sensor4":2074.0,"sensor5":0.0,"sensor6":0.0}
+
+I (203022) COORDINATOR: Received JSON: {"sensor4":2047.0,"sensor5":0.0,"sensor6":0.0}
+```
+
+> **Note:** `sensor4` corresponds to the voltage transducer connected to the end device. The reported value is the raw ADC reading received over the Zigbee network.
+
+---
+
 ### Troubleshooting
 | Problem               | Solution                        |
 | --------------------- | ------------------------------- |
