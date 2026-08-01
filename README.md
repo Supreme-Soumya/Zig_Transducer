@@ -116,6 +116,57 @@ I (203022) COORDINATOR: Received JSON: {"sensor4":2047.0,"sensor5":0.0,"sensor6"
 
 ---
 
+### Voltage Conversion Utility
+
+The coordinator firmware transmits the **raw ADC readings** received from the end device over the Zigbee network. To convert these raw values into the corresponding AC voltage, a Python utility script (`Voltage_Converter.py`) has been provided in the `src` directory.
+
+Before running the script, update the following parameters according to your hardware configuration:
+
+```python
+ADC_MAX_RAW        = 4095
+ADC_VREF           = 4.095
+TRANSDUCER_OUT_MAX = 5.0
+TRANSDUCER_IN_MAX  = 500.0
+
+SERIAL_PORT = "YOUR_PORT"
+BAUD_RATE   = 115200
+```
+
+Replace `YOUR_PORT` with the serial port of your coordinator.
+
+Examples:
+
+- **Windows:** `COM5`
+- **Linux:** `/dev/ttyUSB0`
+
+The script continuously listens to the coordinator's serial output, extracts the transmitted JSON packets, converts the ADC readings into AC voltage using the configured transducer parameters, and displays the results in a human-readable format.
+
+#### Expected Output
+
+```text
+Opening /dev/ttyUSB0 at 115200 baud...
+Listening for data...
+
+─────────────────────────────────────────────
+  sensor4: 204.60 VAC  (raw=2046)
+  sensor5: 0.00 VAC    (raw=0)
+  sensor6: 0.00 VAC    (raw=0)
+
+─────────────────────────────────────────────
+  sensor4: 205.00 VAC  (raw=2050)
+  sensor5: 0.00 VAC    (raw=0)
+  sensor6: 0.00 VAC    (raw=0)
+
+─────────────────────────────────────────────
+  sensor4: 205.30 VAC  (raw=2053)
+  sensor5: 0.00 VAC    (raw=0)
+  sensor6: 0.00 VAC    (raw=0)
+```
+
+> **Note:** The conversion is performed using the transducer specifications (`TRANSDUCER_OUT_MAX` and `TRANSDUCER_IN_MAX`). If you are using a different voltage transducer, update these values accordingly to obtain accurate voltage measurements.
+
+---
+
 ### Troubleshooting
 | Problem               | Solution                        |
 | --------------------- | ------------------------------- |
