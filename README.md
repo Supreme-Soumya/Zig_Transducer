@@ -13,7 +13,7 @@ If you tried to make a project with zigbee outside the built-in examples from ar
 ### Project Description
 1. A voltage transducer reads the real voltage and gives proportional analog voltage that can be safely measured by the ESP32-C6.
 2. ESP32-C6 end device processes this ADC reading, converts it into the corresponding voltage value, and sends the data wirelessly over the Zigbee network.
-3. The coordinator receives these packets and outputs the received measurements through the serial monitor.
+3. The coordinator receives these packets and outputs the received measurements through the serial monitor (optional python script to convert the ADC value to the measured voltage)
    
 ---
 
@@ -27,11 +27,12 @@ If you tried to make a project with zigbee outside the built-in examples from ar
 ### Repository Structure 
 ```text
 Zig_Transducer/
-├── documentations/      # Block diagrams and documentation images
+├── documentations/      	# Block diagrams and documentation images
 ├── src/
-│   ├── coordinator/     # Coordinator firmware
-│   ├── end_device/      # End Device firmware
-│   └── router/          # Router firmware
+│   ├── coordinator/     	# Coordinator firmware
+│   ├── end_device/      	# End Device firmware
+│   └── router/          	# Router firmware
+|   └── serial_display.py   # Python script to display voltage values from ADC values
 ├── LICENSE
 └── README.md
 ```
