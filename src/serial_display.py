@@ -2,12 +2,12 @@ import serial
 import json
 
 # ── Constants ──────────────────────────────────────────────
-ADC_MAX_RAW        = 4095
+ADC_MAX_RAW        = 4095        
 ADC_VREF           = 4.095
-TRANSDUCER_OUT_MAX = 5.0
+TRANSDUCER_OUT_MAX = 5.0            # Adjust these parameters according to your setup
 TRANSDUCER_IN_MAX  = 500.0
 
-SERIAL_PORT = "/dev/ttyUSB0"
+SERIAL_PORT = "YOUR_PORT"
 BAUD_RATE   = 115200
 
 # ── Conversion ─────────────────────────────────────────────
@@ -26,7 +26,6 @@ def main():
                 continue
 
             # Try to extract JSON from the line
-            # Coordinator may print extra log text, so find the { } block
             start = line.find("{")
             end   = line.rfind("}") + 1
             if start == -1 or end == 0:
