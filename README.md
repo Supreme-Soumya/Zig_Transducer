@@ -1,4 +1,8 @@
 # Zig_Transducer
+![ESP32-C6](https://img.shields.io/badge/ESP32--C6-Tested-success)
+![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v5.3.2-blue)
+![License](https://img.shields.io/github/license/Supreme-Soumya/Zig_Transducer)
+
 A Zigbee based WSN Node setup to read Transducer data
 
 ### Motivation
